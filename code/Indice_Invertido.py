@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
-import math
 import numpy as np
 import re
 import argparse
@@ -14,7 +13,8 @@ from pathlib import Path
 import time
 
 
-# In[105]:
+# In[3]:
+
 
 # Atributos da classe:
 #     indice: Um indice invertido. As chaves são o id de cada documento.
@@ -52,22 +52,6 @@ class Indice_Invertido:
                         self.indice[word][i] = 1
                 else:
                     self.indice[word] = {i:1}
-    
-    def coordenadas(indInv, numDocs):
-        coords = np.zeros((len(indInv), numDocs))
-        indicePalavra = 0;
-
-        for k, v in indInv.items():
-            nx = len(v)
-            idf = math.log(numDocs/nx)
-            
-            for dados in v:
-                w = dados[1] * idf
-                coords[indicePalavra][dados[0]] = w
-
-            indicePalavra+=1
-
-        return coords
 
     #essa função deu erro em relação ao k
     def formataQuery(indInv, indQ, numDocs):
@@ -94,10 +78,4 @@ class Indice_Invertido:
             similaridade = (vec.T @ Q)/(np.linalg.norm(vec) * np.linalg.norm(Q))
             resultado[i] = similaridade[0][0]
         return resultado
-
-
-# In[106]:
-
-
-a = Indice_Invertido("../data")
 
