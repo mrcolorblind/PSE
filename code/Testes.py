@@ -10,7 +10,7 @@ import Consulta
 import numpy as np
 
 #Testes relacionados ao "Indice_Invertido"
-#teste de "formataString"
+#testes de "formataString"
 s = ''
 #função lower
 strTest_lower = "ABDKdfkjOOk"
